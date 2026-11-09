@@ -6,8 +6,9 @@ readme = "README.md"
 requires-python = ">=3.11"
 license = { text = "MIT" }
 authors = [
-    { name = "PDPA Audit Team" }
+    { name = "Sadeep Sasanka", email = "sasankasadeep78@gmail.com" }
 ]
+urls = { "Homepage" = "https://github.com/Sadeep78/pdpa-audit-mcp", "Repository" = "https://github.com/Sadeep78/pdpa-audit-mcp" }
 dependencies = [
     "fastmcp>=0.4.1",
     "httpx>=0.28.1,<0.29.0",
