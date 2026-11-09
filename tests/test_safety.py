@@ -1,6 +1,7 @@
 """Unit tests for safety guardrails: SSRF protection, path validation, and data sanitization."""
 
 import socket
+import sys
 from pathlib import Path
 from unittest.mock import AsyncMock, MagicMock, patch
 
@@ -361,6 +362,7 @@ class TestWindowsPathGuard:
         mixed_path = Path(str(tmp_path).lower() + "/subfolder\\testfile.html")
         assert is_safe_file_path(tmp_path, mixed_path) is True
 
+    @pytest.mark.skipif(sys.platform != "win32", reason="NTFS directory junctions are Windows-only")
     def test_junction_escaping_root_rejected(self, tmp_path: Path):
         """Test Windows NTFS directory junction escaping root without requiring admin rights."""
         import _winapi
