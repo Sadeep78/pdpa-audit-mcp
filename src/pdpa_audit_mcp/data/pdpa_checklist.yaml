@@ -1,0 +1,444 @@
+# Sri Lanka Personal Data Protection Act (PDPA No. 9 of 2022) Technical Readiness Checklist
+# IMPORTANT: All legal_ref fields are set to "TODO_VERIFY" and legal_ref_verified is false per hard rules.
+# Do NOT invent PDPA section numbers; legal references must be verified against official gazetted text at dpa.gov.lk.
+# Note: Sinhala and Tamil translations are technical indicator keywords and should be reviewed by a native legal translator.
+# Cautious wording: Technical checks reflect expected good practice; obligations are subject to verification under the Act.
+
+rules:
+  # -------------------------------------------------------------------------
+  # Transparency / Privacy Notice
+  # -------------------------------------------------------------------------
+  - id: "transparency_purpose"
+    category: "Transparency / Privacy Notice"
+    title: "Explicit Purpose of Processing Specified"
+    description: "The privacy notice should clearly articulate the specific, explicit, and legitimate purposes for processing personal data (expected good practice, obligation to be verified against the Act)."
+    severity: "high"
+    weight: 3
+    check_type: "privacy_policy"
+    all_of:
+      - ["privacy policy", "privacy notice", "personal data", "data processing", "පෞද්ගලිකත්ව ප්‍රතිපත්තිය", "පෞද්ගලික දත්ත", "දත්ත භාවිතය", "දත්ත සැකසීම", "தனியுரிமை கொள்கை", "தனியுரிமைக் கொள்கை", "தனிப்பட்ட தரவு", "தனிப்பட்ட தகவல்", "தரவு செயலாக்கம்"]
+      - ["purposes of processing", "processing purposes", "why we collect", "how we use your data", "purpose of collecting", "අරමුණ", "දත්ත භාවිතය හා අරමුණ", "සැකසීමේ අරමුණ", "செயலாக்கத்தின் நோக்கம்", "பிரதான நோக்கம்", "நோக்கம் மற்றும் பயன்பாடு"]
+    recommendation: "State explicitly why each category of personal data is collected and ensure processing is limited to those stated purposes."
+    legal_ref: "TODO_VERIFY"
+    legal_ref_verified: false
+    source_url: null
+
+
+  - id: "transparency_categories"
+    category: "Transparency / Privacy Notice"
+    title: "Categories of Personal Data Stated"
+    description: "The privacy policy should describe the categories of personal data collected directly or indirectly (expected good practice, obligation to be verified against the Act)."
+    severity: "medium"
+    weight: 2
+    check_type: "privacy_policy"
+    all_of:
+      - ["privacy policy", "privacy notice", "personal data", "පෞද්ගලිකත්ව ප්‍රතිපත්තිය", "පෞද්ගලික දත්ත", "தனியுரிமை கொள்கை", "தனியுரிமைக் கொள்கை", "தனிப்பட்ட தரவு", "தனிப்பட்ட தகவல்"]
+      - ["categories of data", "categories of personal data", "information we collect", "types of data collected", "personal data collected", "what personal data we collect", "එකතු කරන දත්ත කාණ්ඩ", "එකතු කරන දත්ත", "පෞද්ගලික තොරතුරු", "சேகரிக்கப்படும் தரவு வகைகள்", "சேகரிக்கப்படும் தரவு", "சேகரிக்கும் தகவல்கள்"]
+    recommendation: "Provide a clear breakdown of personal data types (e.g. name, contact details, payment information, IP addresses) collected from data subjects."
+    legal_ref: "TODO_VERIFY"
+    legal_ref_verified: false
+    source_url: null
+
+
+  - id: "transparency_retention"
+    category: "Transparency / Privacy Notice"
+    title: "Data Retention Period Disclosed"
+    description: "The privacy notice should specify the time period for which personal data is retained or the criteria used to determine that period (expected good practice, obligation to be verified against the Act)."
+    severity: "medium"
+    weight: 2
+    check_type: "privacy_policy"
+    all_of:
+      - ["privacy policy", "personal data", "data retention", "පෞද්ගලිකත්ව ප්‍රතිපත්තිය", "පෞද්ගලික දත්ත", "දත්ත රඳවා තබා ගැනීම", "தனியுரிமை கொள்கை", "தனிப்பட்ட தரவு", "தரவு வைத்திருக்கும் காலம்"]
+      - ["retention period", "how long we keep", "storage period", "data retention", "retained for", "කාලසීමාව", "රඳවා තබා ගැනීමේ කාලසීමාව", "රඳවා තබා ගැනීම", "வைத்திருக்கும் காலம்", "தக்கவைப்பு காலம்", "அழிக்கப்படும்"]
+    recommendation: "Define and publish concrete retention schedules or explicit criteria determining how long personal data is kept."
+    legal_ref: "TODO_VERIFY"
+    legal_ref_verified: false
+    source_url: null
+
+
+  - id: "transparency_recipients"
+    category: "Transparency / Privacy Notice"
+    title: "Third-Party Data Sharing and Recipients Disclosed"
+    description: "The privacy notice should disclose third parties, service providers, or partners with whom personal data is shared (expected good practice, obligation to be verified against the Act)."
+    severity: "medium"
+    weight: 2
+    check_type: "privacy_policy"
+    all_of:
+      - ["privacy policy", "personal data", "පෞද්ගලික දත්ත", "தனிப்பட்ட தரவு"]
+      - ["third party", "third parties", "service providers", "disclosure of personal data", "shared with third parties", "data recipients", "recipients of data", "තෙවන පාර්ශව", "දත්ත හුවමාරුව", "மூன்றாம் தரப்பு", "தரவு பகிர்வு"]
+    recommendation: "List all categories of third-party processors, cloud service providers, and analytics partners receiving personal data."
+    legal_ref: "TODO_VERIFY"
+    legal_ref_verified: false
+    source_url: null
+
+
+  - id: "transparency_contact"
+    category: "Transparency / Privacy Notice"
+    title: "Privacy Contact Information Published"
+    description: "Contact channels for privacy inquiries, complaints, or grievance redressal should be clearly provided (expected good practice, obligation to be verified against the Act)."
+    severity: "high"
+    weight: 3
+    check_type: "privacy_policy"
+    all_of:
+      - ["privacy policy", "data protection", "පෞද්ගලික දත්ත", "தரவு பாதுகாப்பு"]
+      - ["contact us", "privacy contact", "data protection inquiries", "contact details", "privacy email", "reach our privacy team", "විමසීම්", "සම්බන්ධ වන්න", "தொடர்பு கொள்ள", "தனியுரிமை தொடர்பு"]
+    recommendation: "Provide a dedicated contact method (email, postal address, or support webform) for data privacy inquiries."
+    legal_ref: "TODO_VERIFY"
+    legal_ref_verified: false
+    source_url: null
+
+
+  # -------------------------------------------------------------------------
+  # Data Subject Rights
+  # -------------------------------------------------------------------------
+  - id: "rights_access"
+    category: "Data Subject Rights"
+    title: "Right to Access Personal Data"
+    description: "Data subjects generally have the right to confirm whether their personal data is processed and to obtain a copy thereof (expected good practice, obligation to be verified against the Act)."
+    severity: "high"
+    weight: 3
+    check_type: "privacy_policy"
+    all_of:
+      - ["data subject rights", "your rights", "privacy rights", "අයිතිවාසිකම්", "පුද්ගල අයිතිවාසිකම්", "உரிமைகள்", "தரவு உரிமைகள்"]
+      - ["right of access", "right to access", "request access to your data", "copy of your data", "access your personal data", "දත්ත ලබා ගැනීමේ අයිතිය", "ප්‍රවේශ වීමේ අයිතිය", "அணுகல் உரிமை", "தரவை அணுகும் உரிமை"]
+    recommendation: "Explain how users can request a copy of the personal data held about them."
+    legal_ref: "TODO_VERIFY"
+    legal_ref_verified: false
+    source_url: null
+
+
+  - id: "rights_correction"
+    category: "Data Subject Rights"
+    title: "Right to Rectification / Correction"
+    description: "Data subjects generally have the right to request correction or updating of inaccurate or incomplete personal data (expected good practice, obligation to be verified against the Act)."
+    severity: "high"
+    weight: 3
+    check_type: "privacy_policy"
+    all_of:
+      - ["data subject rights", "your rights", "privacy rights", "අයිතිවාසිකම්", "உரிமைகள்"]
+      - ["right to rectification", "right to correction", "correct your data", "update your personal data", "rectify inaccurate data", "නිවැරදි කිරීමේ අයිතිය", "දත්ත යාවත්කාලීන", "திருத்தம் செய்யும் உரிமை", "தரவு புதுப்பித்தல்"]
+    recommendation: "Detail the procedure for individuals to submit correction or rectification requests."
+    legal_ref: "TODO_VERIFY"
+    legal_ref_verified: false
+    source_url: null
+
+
+  - id: "rights_erasure"
+    category: "Data Subject Rights"
+    title: "Right to Erasure / Deletion"
+    description: "Data subjects should be informed of their right to request erasure of their personal data under applicable grounds (expected good practice, obligation to be verified against the Act)."
+    severity: "high"
+    weight: 3
+    check_type: "privacy_policy"
+    all_of:
+      - ["data subject rights", "your rights", "privacy rights", "අයිතිවාසිකම්", "உரிமைகள்"]
+      - ["right to erasure", "right to deletion", "delete your personal data", "right to be forgotten", "request erasure", "මකා දැමීමේ අයිතිය", "දත්ත ඉවත් කිරීම", "நீக்கும் உரிமை", "தரவு அழித்தல்"]
+    recommendation: "Clarify the grounds and mechanism for requesting deletion/erasure of personal data."
+    legal_ref: "TODO_VERIFY"
+    legal_ref_verified: false
+    source_url: null
+
+
+  - id: "rights_withdraw_consent"
+    category: "Data Subject Rights"
+    title: "Right to Withdraw Consent"
+    description: "Where processing relies on consent, individuals should be provided the ability to withdraw consent at any time (expected good practice, obligation to be verified against the Act)."
+    severity: "high"
+    weight: 3
+    check_type: "privacy_policy"
+    all_of:
+      - ["consent", "කැමැත්ත", "ஒப்புதல்"]
+      - ["withdraw consent", "withdrawal of consent", "revoke consent", "opt out", "unsubscribe", "කැමැත්ත ඉල්ලා අස්කර ගැනීම", "ஒப்புதலைத் திரும்பப் பெறுதல்"]
+    recommendation: "State that consent may be withdrawn at any time and specify how to execute withdrawal."
+    legal_ref: "TODO_VERIFY"
+    legal_ref_verified: false
+    source_url: null
+
+
+  - id: "rights_objection"
+    category: "Data Subject Rights"
+    title: "Right to Object to Processing"
+    description: "Individuals should have the right to object to processing, particularly for direct marketing or automated profiling (expected good practice, obligation to be verified against the Act)."
+    severity: "medium"
+    weight: 2
+    check_type: "privacy_policy"
+    all_of:
+      - ["data subject rights", "your rights", "privacy rights", "අයිතිවාසිකම්", "உரிமைகள்"]
+      - ["right to object", "object to processing", "direct marketing opt-out", "stop direct marketing", "විරුද්ධ වීමේ අයිතිය", "දත්ත සැකසීමට විරෝධය", "செயலாக்கத்திற்கு எதிர்ப்பு", "நேரடி சந்தைப்படுத்தல் எதிர்ப்பு"]
+    recommendation: "Provide users with a straightforward way to object to processing, especially for commercial marketing."
+    legal_ref: "TODO_VERIFY"
+    legal_ref_verified: false
+    source_url: null
+
+  - id: "rights_request_procedure"
+    category: "Data Subject Rights"
+    title: "Procedure for Exercising Data Subject Rights"
+    description: "Clear instructions should exist on how, where, and through which format a data subject rights request can be lodged (expected good practice, obligation to be verified against the Act)."
+    severity: "medium"
+    weight: 2
+    check_type: "privacy_policy"
+    all_of:
+      - ["data subject rights", "your rights", "privacy rights", "අයිතිවාසිකම්", "உரிமைகள்", "உரிமைகளை"]
+      - ["exercise your rights", "how to submit a request", "submit a rights request", "lodge a request", "request procedure", "අයිතිවාසිකම් ක්‍රියාත්මක කිරීම", "ඉල්ලීමක් ඉදිරිපත් කිරීම", "கோரிக்கையைச் சமர்ப்பிக்க", "உரிமைகளைப் பயன்படுத்த"]
+    recommendation: "Include a designated email or self-service portal link for exercising data protection rights."
+    legal_ref: "TODO_VERIFY"
+    legal_ref_verified: false
+    source_url: null
+
+  - id: "erasure_mechanism_in_code"
+    category: "Data Subject Rights"
+    title: "Code-Level Data Erasure Mechanism"
+    description: "Codebases storing personal data schemas should provide automated erasure, deletion, or retention procedures to fulfill erasure obligations (technical readiness indicator, obligation to be verified against the Act)."
+    severity: "medium"
+    weight: 2
+    check_type: "project"
+    detector: "erasure_mechanism_in_code"
+    recommendation: "Implement explicit personal data erasure/purge procedures or retention routines in application schemas."
+    legal_ref: "TODO_VERIFY"
+    legal_ref_verified: false
+    source_url: null
+
+  # -------------------------------------------------------------------------
+  # Consent
+  # -------------------------------------------------------------------------
+  - id: "consent_before_tracking"
+    category: "Consent"
+    title: "Consent Prior to Non-Essential Cookies and Trackers"
+    description: "Non-essential analytics, advertising, or profiling scripts should not execute before obtaining explicit user consent (expected good practice, obligation to be verified against the Act)."
+    severity: "high"
+    weight: 3
+    check_type: "cookie_consent"
+    detector: "consent_before_tracking"
+    recommendation: "Implement an upfront consent management banner that blocks non-essential cookies and tracking pixels prior to user opt-in."
+    legal_ref: "TODO_VERIFY"
+    legal_ref_verified: false
+    source_url: null
+
+
+  - id: "consent_not_preticked"
+    category: "Consent"
+    title: "Consent Not Pre-Ticked (Opt-In by Default)"
+    description: "Consent checkboxes for marketing, data sharing, or cookies should not be pre-checked (expected good practice, obligation to be verified against the Act)."
+    severity: "high"
+    weight: 3
+    check_type: "forms"
+    detector: "consent_not_preticked"
+    recommendation: "Ensure all consent checkboxes are unchecked by default, requiring affirmative voluntary action."
+    legal_ref: "TODO_VERIFY"
+    legal_ref_verified: false
+    source_url: null
+
+
+  - id: "consent_easy_withdrawal"
+    category: "Consent"
+    title: "Withdrawal of Consent As Easy As Giving"
+    description: "Users should be able to withdraw or alter cookie/processing consent with equal ease, such as via persistent cookie settings (expected good practice, obligation to be verified against the Act)."
+    severity: "medium"
+    weight: 2
+    check_type: "cookie_consent"
+    all_of:
+      - ["cookie policy", "cookie consent", "කුකීස්", "குக்கீ ஒப்புதல்"]
+      - ["cookie settings", "manage preferences", "reject all cookies", "withdraw consent", "මනාප කළමනාකරණය", "குக்கீ அமைப்புகள்", "விருப்பங்களை நிர்வகி"]
+    recommendation: "Provide a persistent 'Cookie Settings' link or button allowing visitors to revise or revoke their consent at any time."
+    legal_ref: "TODO_VERIFY"
+    legal_ref_verified: false
+    source_url: null
+
+
+  # -------------------------------------------------------------------------
+  # Data Protection Officer (DPO)
+  # -------------------------------------------------------------------------
+  - id: "dpo_contact_published"
+    category: "Data Protection Officer"
+    title: "DPO or Privacy Lead Details Published"
+    description: "Where required or appointed, the contact information of the Data Protection Officer or privacy lead should be accessible (expected good practice, obligation to be verified against the Act)."
+    severity: "medium"
+    weight: 2
+    check_type: "privacy_policy"
+    all_of:
+      - ["data protection", "privacy officer", "දත්ත ආරක්ෂණ", "தரவு பாதுகாப்பு"]
+      - ["data protection officer", "dpo contact", "privacy lead", "dpo email", "දත්ත ආරක්ෂණ නිලධාරී", "தரவு பாதுகாப்பு அதிகாரி"]
+    recommendation: "Publish the contact details or designated inbox for the organization's Data Protection Officer or privacy coordinator."
+    legal_ref: "TODO_VERIFY"
+    legal_ref_verified: false
+    source_url: null
+
+
+  # -------------------------------------------------------------------------
+  # Data Minimisation
+  # -------------------------------------------------------------------------
+  - id: "minimisation_sensitive_fields"
+    category: "Data Minimisation"
+    title: "Special Categories / Sensitive Personal Data Justification"
+    description: "Collection of sensitive data (national ID / NIC, biometric, health, religious beliefs, criminal records) in web forms should be strictly justified (expected good practice, obligation to be verified against the Act)."
+    severity: "high"
+    weight: 3
+    check_type: "forms"
+    detector: "minimisation_sensitive_fields"
+    recommendation: "Audit form fields to eliminate unnecessary collection of sensitive data such as National Identity Card (NIC) numbers unless legally mandated."
+    legal_ref: "TODO_VERIFY"
+    legal_ref_verified: false
+    source_url: null
+
+
+  # -------------------------------------------------------------------------
+  # Security Safeguards
+  # -------------------------------------------------------------------------
+  - id: "security_https_enforced"
+    category: "Security Safeguards"
+    title: "HTTPS Encryption Enforced"
+    description: "All web traffic and form submissions should be transmitted securely over HTTPS (TLS encryption in transit, technical best practice)."
+    severity: "high"
+    weight: 3
+    check_type: "forms"
+    detector: "security_https_enforced"
+    recommendation: "Enforce HTTPS with HSTS and ensure all HTML form action attributes use secure HTTPS endpoints."
+    legal_ref: "TODO_VERIFY"
+    legal_ref_verified: false
+    source_url: null
+
+
+  - id: "security_secure_cookie_flags"
+    category: "Security Safeguards"
+    title: "Secure, HttpOnly, and SameSite Flags on Cookies"
+    description: "Session and sensitive cookies should feature Secure, HttpOnly, and appropriate SameSite flags to safeguard against theft (technical security safeguard)."
+    severity: "medium"
+    weight: 2
+    check_type: "cookie_consent"
+    detector: "security_secure_cookie_flags"
+    recommendation: "Configure session and authentication cookies with HttpOnly, Secure, and SameSite=Lax/Strict flags."
+    legal_ref: "TODO_VERIFY"
+    legal_ref_verified: false
+    source_url: null
+
+
+  - id: "security_no_pii_in_urls"
+    category: "Security Safeguards"
+    title: "No Personal Data in Query Parameters"
+    description: "GET request query strings should not contain personal data (e.g. emails, phone numbers, NIC) which risk leaking in browser history and server access logs (technical best practice)."
+    severity: "high"
+    weight: 3
+    check_type: "forms"
+    detector: "security_no_pii_in_urls"
+    recommendation: "Use POST methods with request bodies for personal data submissions rather than GET parameters."
+    legal_ref: "TODO_VERIFY"
+    legal_ref_verified: false
+    source_url: null
+
+
+  - id: "security_password_autocomplete"
+    category: "Security Safeguards"
+    title: "Password Fields Permit Proper Password Manager Autocomplete"
+    description: "Password inputs should use proper autocomplete attributes rather than disabling password managers (technical best practice)."
+    severity: "low"
+    weight: 1
+    check_type: "forms"
+    detector: "security_password_autocomplete"
+    recommendation: "Set standard autocomplete attributes (current-password, new-password) on credential fields to support secure credential managers."
+    legal_ref: "TODO_VERIFY"
+    legal_ref_verified: false
+    source_url: null
+
+
+  - id: "no_pii_in_logs"
+    category: "Security Safeguards"
+    title: "No Personal Data in Application Logs"
+    description: "Application source code should not log personal or sensitive data fields to console or standard logs (technical readiness indicator, obligation to be verified against the Act)."
+    severity: "high"
+    weight: 3
+    check_type: "project"
+    detector: "no_pii_in_logs"
+    recommendation: "Refactor logging calls to remove personal data fields and log references only (file and line numbers)."
+    legal_ref: "TODO_VERIFY"
+    legal_ref_verified: false
+    source_url: null
+
+
+  # -------------------------------------------------------------------------
+  # Breach Readiness
+  # -------------------------------------------------------------------------
+  - id: "breach_response_plan_documented"
+    category: "Breach Readiness"
+    title: "Documented Incident and Personal Data Breach Response Plan"
+    description: "Organizations should maintain documented incident response plans detailing breach assessment, containment, and notification steps (expected good practice, obligation to be verified against the Act)."
+    severity: "high"
+    weight: 3
+    check_type: "breach"
+    all_of:
+      - ["data breach", "security incident", "breach response", "දත්ත කඩවීම", "தரவு மீறல்"]
+      - ["incident response plan", "data breach policy", "breach containment procedure", "incident management", "සිද්ධි කළමනාකරණ සැලැස්ම", "சம்பவ மேலாண்மை திட்டம்"]
+    recommendation: "Create and maintain an incident response plan outlining internal steps for identifying, containing, and evaluating personal data breaches."
+    legal_ref: "TODO_VERIFY"
+    legal_ref_verified: false
+    source_url: null
+
+
+  - id: "breach_notification_contact"
+    category: "Breach Readiness"
+    title: "Designated Breach Notification and Escalation Contact"
+    description: "Clear contact roles should exist for reporting security incidents internally and evaluating regulatory notification obligations (expected good practice, obligation to be verified against the Act)."
+    severity: "medium"
+    weight: 2
+    check_type: "breach"
+    all_of:
+      - ["data breach", "security incident", "ආරක්ෂක සිද්ධි", "பாதுகாப்பு சம்பவம்"]
+      - ["security contact", "incident lead", "breach escalation contact", "incident response team", "ආරක්ෂක සම්බන්ධීකාරක", "பாதுகாப்பு தொடர்பு"]
+    recommendation: "Identify specific roles or dedicated inboxes (e.g. security@org.lk) responsible for breach notifications."
+    legal_ref: "TODO_VERIFY"
+    legal_ref_verified: false
+    source_url: null
+
+
+  - id: "breach_internal_escalation"
+    category: "Breach Readiness"
+    title: "Defined Breach Escalation and Record-Keeping Timelines"
+    description: "The breach procedure should outline documentation of facts, effects, remedial actions, and prompt internal escalation (expected good practice, obligation to be verified against the Act)."
+    severity: "medium"
+    weight: 2
+    check_type: "breach"
+    all_of:
+      - ["data breach", "security incident", "දත්ත කඩවීම", "தரவு மீறல்"]
+      - ["escalation procedure", "breach log", "incident register", "breach recording procedure", "වාර්තා තබා ගැනීම", "மீறல் பதிவேடு"]
+    recommendation: "Maintain a personal data breach register documenting the nature of incidents, affected data subjects, and corrective measures taken."
+    legal_ref: "TODO_VERIFY"
+    legal_ref_verified: false
+    source_url: null
+
+
+  # -------------------------------------------------------------------------
+  # Cross-Border Transfers
+  # -------------------------------------------------------------------------
+  - id: "transfer_cross_border_disclosed"
+    category: "Cross-Border Transfers"
+    title: "Cross-Border Transfers and International Processors Disclosed"
+    description: "Where third-party scripts, cloud providers, or data centers outside Sri Lanka process personal data, cross-border transfers should be disclosed (expected good practice, obligation to be verified against the Act)."
+    severity: "medium"
+    weight: 2
+    check_type: "transfer"
+    all_of:
+      - ["personal data", "cross-border transfer", "third-party", "third party", "cloud hosting", "පෞද්ගලික දත්ත", "තෙවන පාර්ශව", "தனிப்பட்ட தரவு", "மூன்றாம் தரப்பு"]
+      - ["international transfer", "transferred outside sri lanka", "outside sri lanka", "cross-border processing", "cross-border transfer", "foreign servers", "overseas processing", "ශ්‍රී ලංකාවෙන් පිටතට පැවරීම", "ශ්‍රී ලංකාවෙන් පිටත", "දේශසීමා හරහා දත්ත", "இலங்கைக்கு வெளியே பரிமாற்றம்", "இலங்கைக்கு வெளியே", "எல்லை தாண்டிய செயலாக்கம்"]
+    recommendation: "Disclose in the privacy policy whether personal data is transferred or hosted outside Sri Lanka and specify the safeguards in place."
+    legal_ref: "TODO_VERIFY"
+    legal_ref_verified: false
+    source_url: null
+
+
+  # -------------------------------------------------------------------------
+  # Children's Data
+  # -------------------------------------------------------------------------
+  - id: "children_age_gate_notice"
+    category: "Children's Data"
+    title: "Age Verification or Notice for Processing Minors' Data"
+    description: "Services offering products or content accessible by or targeted at children should provide age verification or parental consent mechanisms (expected good practice, obligation to be verified against the Act)."
+    severity: "high"
+    weight: 3
+    check_type: "manual"
+    all_of:
+      - ["children's personal data", "minors", "under 18", "under 16", "ළමුන්ගේ දත්ත", "குழந்தைகளின் தரவு"]
+      - ["parental consent", "age verification", "age verification gate", "දෙමාපිය කැමැත්ත", "பெற்றோர் ஒப்புதல்"]
+    recommendation: "Assess whether the digital service processes minors' data; implement age gating and parental authorization where required."
+    legal_ref: "TODO_VERIFY"
+    legal_ref_verified: false
+    source_url: null
+

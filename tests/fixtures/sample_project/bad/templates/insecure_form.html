@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Insecure Registration</title>
+</head>
+<body>
+  <!-- GET submission with sensitive fields and pre-ticked consent -->
+  <form method="GET" action="http://insecure.example.com/submit">
+    <div>
+      <label for="nic">National Identity Card (NIC)</label>
+      <input type="text" id="nic" name="nic">
+    </div>
+    <div>
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email">
+    </div>
+    <div>
+      <label for="pwd">Password</label>
+      <input type="password" id="pwd" name="password" autocomplete="off">
+    </div>
+    <div>
+      <label>
+        <input type="checkbox" name="marketing_consent" checked>
+        Send me unsolicited promotional offers
+      </label>
+    </div>
+    <button type="submit">Submit</button>
+  </form>
+</body>
+</html>

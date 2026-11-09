@@ -1,0 +1,11 @@
+{
+  "name": "bad-pdpa-service",
+  "version": "1.0.0",
+  "description": "Insecure sample application with tracking and no retention policies",
+  "dependencies": {
+    "express": "^4.19.2",
+    "@segment/analytics-next": "^1.50.0",
+    "google-analytics": "^1.0.0",
+    "mixpanel": "^0.18.0"
+  }
+}

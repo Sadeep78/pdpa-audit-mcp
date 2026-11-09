@@ -1,0 +1,9 @@
+{
+  "name": "good-pdpa-service",
+  "version": "1.0.0",
+  "description": "Secure sample application with strong PDPA safeguards",
+  "dependencies": {
+    "express": "^4.19.2",
+    "react": "^18.2.0"
+  }
+}

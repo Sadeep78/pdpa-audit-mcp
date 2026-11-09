@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Insecure Store</title>
+  <!-- Third-party trackers loaded directly without prior consent -->
+  <script src="https://www.google-analytics.com/analytics.js"></script>
+  <script src="https://connect.facebook.net/en_US/fbevents.js"></script>
+  <!-- External CDN resources -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+</head>
+<body>
+  <h1>Welcome to Insecure Store</h1>
+
+  <!-- Cookie banner with ONLY Accept button, missing Reject option -->
+  <div id="cookie-banner" class="cookie-popup">
+    <p>We use cookies. Click accept to continue.</p>
+    <button id="btn-accept">Accept All Cookies</button>
+  </div>
+
+  <!-- Insecure form submitting over HTTP with sensitive NIC field -->
+  <form action="http://insecure-store.lk/register" method="POST">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required>
+
+    <label for="nic">National Identity Card (NIC):</label>
+    <input type="text" id="nic" name="nic" required>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+
+    <button type="submit">Register</button>
+  </form>
+
+  <footer>
+    <a href="/privacy.html">Privacy</a>
+  </footer>
+</body>
+</html>

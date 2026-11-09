@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sri Lanka PDPA Technical Readiness Audit Dashboard</title>
+  <meta name="bridge-token" content="__BRIDGE_TOKEN__">
+  <style nonce="__CSP_NONCE__">
+    :root {
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --primary: #0284c7;
+      --primary-hover: #0369a1;
+      --danger: #dc2626;
+      --danger-bg: #fef2f2;
+      --warning: #d97706;
+      --warning-bg: #fffbeb;
+      --success: #16a34a;
+      --success-bg: #f0fdf4;
+      --focus-ring: #38bdf8;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0f172a;
+        --card-bg: #1e293b;
+        --text: #f8fafc;
+        --text-muted: #94a3b8;
+        --border: #334155;
+        --primary: #38bdf8;
+        --primary-hover: #0284c7;
+        --danger: #f87171;
+        --danger-bg: #450a0a;
+        --warning: #fbbf24;
+        --warning-bg: #451a03;
+        --success: #4ade80;
+        --success-bg: #052e16;
+        --focus-ring: #0284c7;
+      }
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      padding: 1.5rem;
+    }
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    header {
+      margin-bottom: 1.5rem;
+    }
+    h1 {
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
+    }
+    .disclaimer-banner {
+      background-color: var(--warning-bg);
+      border: 1px solid var(--warning);
+      border-radius: 0.5rem;
+      padding: 1rem;
+      margin-bottom: 1.5rem;
+      font-size: 0.9rem;
+    }
+    .card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 0.5rem;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    }
+    .card-title {
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+    .form-group {
+      margin-bottom: 1rem;
+    }
+    label {
+      display: block;
+      margin-bottom: 0.35rem;
+      font-weight: 500;
+      font-size: 0.95rem;
+    }
+    .input-hint {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 0.35rem;
+    }
+    input[type="text"] {
+      width: 100%;
+      padding: 0.65rem 0.85rem;
+      border: 1px solid var(--border);
+      border-radius: 0.375rem;
+      font-size: 0.95rem;
+      background-color: var(--card-bg);
+      color: var(--text);
+    }
+    input[type="text"]:focus {
+      outline: none;
+      border-color: var(--focus-ring);
+      box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.2);
+    }
+    .btn-row {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.25rem;
+    }
+    .btn {
+      padding: 0.65rem 1.25rem;
+      border-radius: 0.375rem;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      transition: background-color 0.15s ease;
+    }
+    .btn-primary {
+      background-color: var(--primary);
+      color: #ffffff;
+    }
+    .btn-primary:hover:not(:disabled) {
+      background-color: var(--primary-hover);
+    }
+    .btn-primary:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+    .btn-secondary {
+      background-color: transparent;
+      border: 1px solid var(--border);
+      color: var(--text);
+    }
+    .btn-secondary:hover:not(:disabled) {
+      background-color: var(--border);
+    }
+    .status-badge {
+      display: inline-block;
+      padding: 0.25rem 0.5rem;
+      border-radius: 0.25rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+    .badge-passed { background-color: var(--success-bg); color: var(--success); }
+    .badge-failed { background-color: var(--danger-bg); color: var(--danger); }
+    .badge-review { background-color: var(--warning-bg); color: var(--warning); }
+    .badge-not-applicable { background-color: var(--border); color: var(--text-muted); }
+    .badge-not-assessed { background-color: var(--border); color: var(--text-muted); }
+    .gauge-container {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .score-circle {
+      width: 105px;
+      height: 105px;
+      border-radius: 50%;
+      border: 5px solid var(--primary);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      flex-shrink: 0;
+    }
+    .score-val {
+      font-size: 1.45rem;
+      font-weight: 700;
+      line-height: 1.1;
+    }
+    .score-text {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      margin-top: 0.2rem;
+    }
+    .score-summary {
+      flex: 1;
+    }
+    .progress-bar-bg {
+      background-color: var(--border);
+      border-radius: 999px;
+      height: 0.75rem;
+      overflow: hidden;
+      margin: 0.35rem 0 0.85rem;
+    }
+    .progress-bar-fill {
+      background-color: var(--primary);
+      height: 100%;
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+    details {
+      border: 1px solid var(--border);
+      border-radius: 0.375rem;
+      margin-bottom: 0.75rem;
+      background-color: var(--card-bg);
+    }
+    summary {
+      padding: 0.75rem 1rem;
+      cursor: pointer;
+      font-weight: 600;
+      user-select: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .details-content {
+      padding: 1rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.95rem;
+    }
+    .field-row {
+      margin-bottom: 0.5rem;
+    }
+    .field-name {
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+    .code-box {
+      font-family: monospace;
+      padding: 0.5rem;
+      background-color: var(--bg);
+      border-radius: 0.25rem;
+      margin-top: 0.35rem;
+      word-break: break-all;
+    }
+    .error-box {
+      background-color: var(--danger-bg);
+      border: 1px solid var(--danger);
+      color: var(--danger);
+      padding: 0.75rem;
+      border-radius: 0.375rem;
+      margin-bottom: 1rem;
+    }
+    .hidden {
+      display: none;
+    }
+    .mt-sm { margin-top: 0.75rem; }
+    .mt-2 { margin-top: 2rem; }
+    .mb-sm { margin-bottom: 0.35rem; }
+    .mb-md { margin-bottom: 0.5rem; }
+    .text-danger { color: var(--danger); }
+    .flex-between { display: flex; justify-content: space-between; }
+    .font-medium { font-weight: 500; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Sri Lanka PDPA Technical Readiness Audit</h1>
+      <p class="input-hint">Automated Technical Hygiene & Gap Analysis under PDPA No. 9 of 2022</p>
+    </header>
+
+    <div class="disclaimer-banner">
+      <strong>LEGAL DISCLAIMER:</strong> This tool provides technical readiness indicators and gap analysis only. It does <strong>NOT</strong> constitute legal advice or formal certification of compliance with Sri Lanka's Personal Data Protection Act, No. 9 of 2022 (PDPA). Organizations must verify all legal references against the official Act (dpa.gov.lk) and consult qualified legal counsel.
+    </div>
+
+    <section class="card" aria-labelledby="form-heading">
+      <h2 id="form-heading" class="card-title">Run Readiness Audit</h2>
+
+      <div id="general-error" class="error-box hidden" role="alert"></div>
+
+      <div class="form-group">
+        <label for="audit-url">Website URL (optional)</label>
+        <p class="input-hint">Target website to scan for privacy policy, cookie consent, personal data forms, and transfers.</p>
+        <input type="text" id="audit-url" placeholder="example.com or localhost:8000" autocomplete="off" spellcheck="false">
+      </div>
+
+      <div class="form-group">
+        <label for="audit-path">Local Repository Path (optional)</label>
+        <p class="input-hint">Local directory path within allowed roots to scan for data models, retention, and breach readiness.</p>
+        <input type="text" id="audit-path" placeholder="C:\projects\my-app or /home/user/my-app" autocomplete="off" spellcheck="false">
+      </div>
+
+      <div class="btn-row">
+        <button type="button" id="btn-run" class="btn btn-primary">Run Audit</button>
+        <button type="button" id="btn-download" class="btn btn-secondary hidden">Download Report (Markdown)</button>
+      </div>
+
+      <div id="status-live" class="input-hint mt-sm" aria-live="polite"></div>
+    </section>
+
+    <section id="results-section" class="hidden" aria-labelledby="results-heading">
+      <h2 id="results-heading" class="card-title">Audit Readiness Results</h2>
+
+      <div class="card">
+        <div class="gauge-container">
+          <div class="score-circle">
+            <span id="overall-score-val" class="score-val">--</span>
+            <span class="score-text">Readiness</span>
+          </div>
+          <div class="score-circle">
+            <span id="overall-coverage-val" class="score-val">--</span>
+            <span class="score-text">Coverage</span>
+          </div>
+          <div class="score-summary">
+            <h3 id="overall-label" class="mb-sm">Status</h3>
+            <p id="overall-coverage-detail" class="input-hint mb-sm"></p>
+            <p id="overall-counts" class="input-hint">Passed: 0, Failed: 0, Review: 0, Not Evaluated: 0</p>
+          </div>
+        </div>
+
+        <div id="categories-container">
+          <h4 class="mb-md">Category Breakdown</h4>
+          <div id="category-bars"></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 class="card-title">Prioritised Deficiencies & Findings</h3>
+        <div id="findings-list"></div>
+      </div>
+
+      <div class="card">
+        <h3 class="card-title">Items Requiring Manual Review</h3>
+        <div id="review-list"></div>
+      </div>
+
+      <div class="card">
+        <h3 class="card-title">Not Applicable</h3>
+        <div id="not-applicable-list"></div>
+      </div>
+
+      <div class="card">
+        <h3 class="card-title">Not Assessed in This Run</h3>
+        <div id="not-assessed-list"></div>
+      </div>
+
+      <div id="errors-card" class="card hidden">
+        <h3 class="card-title text-danger">Execution Warnings & Isolated Errors</h3>
+        <div id="errors-list"></div>
+      </div>
+    </section>
+
+    <div class="disclaimer-banner mt-2">
+      <strong>LIMITATION:</strong> Rule weights and severities are heuristic indicators only and do not reflect legal priority or liability under Sri Lanka PDPA No. 9 of 2022.
+    </div>
+  </div>
+
+  <script nonce="__CSP_NONCE__">
+    (function() {
+      var bridgeToken = "";
+      var metaToken = document.querySelector('meta[name="bridge-token"]');
+      if (metaToken) {
+        bridgeToken = metaToken.getAttribute("content") || "";
+      }
+
+      var currentReportData = null;
+      var currentMarkdown = "";
+
+      var btnRun = document.getElementById("btn-run");
+      var btnDownload = document.getElementById("btn-download");
+      var inputUrl = document.getElementById("audit-url");
+      var inputPath = document.getElementById("audit-path");
+      var statusLive = document.getElementById("status-live");
+      var generalError = document.getElementById("general-error");
+      var resultsSection = document.getElementById("results-section");
+
+      function clearNode(node) {
+        while (node.firstChild) {
+          node.removeChild(node.firstChild);
+        }
+      }
+
+      function setText(node, text) {
+        clearNode(node);
+        node.appendChild(document.createTextNode(text));
+      }
+
+      function showError(msg) {
+        setText(generalError, msg);
+        generalError.classList.remove("hidden");
+      }
+
+      function hideError() {
+        generalError.classList.add("hidden");
+        clearNode(generalError);
+      }
+
+      btnRun.addEventListener("click", function() {
+        var urlVal = inputUrl.value.trim();
+        var pathVal = inputPath.value.trim();
+
+        if (!urlVal && !pathVal) {
+          showError("Please provide at least a website URL or a local repository path.");
+          return;
+        }
+
+        hideError();
+        btnRun.disabled = true;
+        btnDownload.classList.add("hidden");
+        setText(statusLive, "Executing technical audit... please wait.");
+
+        var payload = {
+          url: urlVal || null,
+          project_path: pathVal || null
+        };
+
+        fetch("/audit/full", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "X-Bridge-Token": bridgeToken
+          },
+          body: JSON.stringify(payload)
+        })
+        .then(function(res) {
+          if (!res.ok) {
+            return res.json().then(function(errObj) {
+              throw new Error(errObj.error_message || "Audit failed with status " + res.status);
+            });
+          }
+          return res.json();
+        })
+        .then(function(data) {
+          if (data.status === "error") {
+            throw new Error(data.error_message || "Audit error occurred.");
+          }
+          currentReportData = data;
+          renderResults(data);
+          setText(statusLive, "Audit completed.");
+          // Fetch markdown report
+          return fetch("/report", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "X-Bridge-Token": bridgeToken
+            },
+            body: JSON.stringify({
+              audit_result: data,
+              format: "markdown"
+            })
+          });
+        })
+        .then(function(mdRes) {
+          if (mdRes && mdRes.ok) {
+            return mdRes.text().then(function(mdText) {
+              currentMarkdown = mdText;
+              btnDownload.classList.remove("hidden");
+            });
+          }
+        })
+        .catch(function(err) {
+          showError(err.message || "An unexpected error occurred during audit.");
+          setText(statusLive, "Audit failed.");
+        })
+        .finally(function() {
+          btnRun.disabled = false;
+        });
+      });
+
+      btnDownload.addEventListener("click", function() {
+        if (!currentMarkdown) return;
+        var blob = new Blob([currentMarkdown], { type: "text/markdown;charset=utf-8" });
+        var blobUrl = URL.createObjectURL(blob);
+        var a = document.createElement("a");
+        a.href = blobUrl;
+        a.download = "pdpa-readiness-gap-report.md";
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(blobUrl);
+      });
+
+      function renderResults(report) {
+        resultsSection.classList.remove("hidden");
+
+        var summary = report.summary || {};
+        var scoreValEl = document.getElementById("overall-score-val");
+        var covValEl = document.getElementById("overall-coverage-val");
+        var covDetailEl = document.getElementById("overall-coverage-detail");
+        var labelEl = document.getElementById("overall-label");
+        var countsEl = document.getElementById("overall-counts");
+
+        if (summary.overall_score === null || summary.overall_score === undefined) {
+          setText(scoreValEl, "N/A");
+          setText(covValEl, "N/A");
+          setText(labelEl, "Insufficient Data");
+          setText(covDetailEl, "Insufficient data to calculate readiness score.");
+        } else {
+          setText(scoreValEl, summary.overall_score.toFixed(1) + "%");
+          var covText = summary.coverage !== null && summary.coverage !== undefined
+            ? summary.coverage.toFixed(1) + "%"
+            : "N/A";
+          setText(covValEl, covText);
+          setText(labelEl, summary.readiness_label || "Evaluated");
+
+          var detailMsg = "Rule Coverage: " + (summary.assessed_rules || 0) + "/" + (summary.applicable_rules || 0) + " rules assessed (" + covText + ")";
+          if (summary.weight_coverage !== null && summary.weight_coverage !== undefined) {
+            detailMsg += " | Weight Coverage: " + summary.weight_coverage.toFixed(1) + "%";
+          }
+          if (summary.total_needs_review > 0) {
+            detailMsg += " | " + summary.total_needs_review + " rules require human review";
+          }
+          setText(covDetailEl, detailMsg);
+        }
+
+        setText(countsEl,
+          "Passed: " + (summary.total_passed || 0) +
+          ", Failed: " + (summary.total_failed || 0) +
+          ", Needs Review: " + (summary.total_needs_review || 0) +
+          ", Not Applicable: " + (summary.total_not_applicable || 0) +
+          ", Not Evaluated: " + (summary.total_not_evaluated || 0)
+        );
+
+        // Render Category Breakdown
+        var catBarsContainer = document.getElementById("category-bars");
+        clearNode(catBarsContainer);
+        var catScores = summary.category_scores || [];
+        for (var i = 0; i < catScores.length; i++) {
+          var cat = catScores[i];
+          var catRow = document.createElement("div");
+          catRow.className = "form-group";
+
+          var labelDiv = document.createElement("div");
+          labelDiv.className = "flex-between";
+          
+          var nameSpan = document.createElement("span");
+          nameSpan.className = "font-medium";
+          setText(nameSpan, cat.category);
+
+          var scoreSpan = document.createElement("span");
+          scoreSpan.className = "input-hint";
+          var scoreText = cat.score !== null && cat.score !== undefined ? cat.score.toFixed(1) + "%" : "Insufficient data";
+          setText(scoreSpan, scoreText);
+
+          labelDiv.appendChild(nameSpan);
+          labelDiv.appendChild(scoreSpan);
+          catRow.appendChild(labelDiv);
+
+          var barBg = document.createElement("div");
+          barBg.className = "progress-bar-bg";
+          var barFill = document.createElement("div");
+          barFill.className = "progress-bar-fill";
+          if (cat.score !== null && cat.score !== undefined) {
+            barFill.style.width = Math.min(100, Math.max(0, cat.score)) + "%";
+          }
+          barBg.appendChild(barFill);
+          catRow.appendChild(barBg);
+          catBarsContainer.appendChild(catRow);
+        }
+
+        // Render Prioritised Findings
+        var findingsList = document.getElementById("findings-list");
+        clearNode(findingsList);
+        var findings = report.findings || [];
+        var failedFindings = [];
+        for (var j = 0; j < findings.length; j++) {
+          if (findings[j].status === "failed") {
+            failedFindings.push(findings[j]);
+          }
+        }
+
+        if (failedFindings.length === 0) {
+          var pNone = document.createElement("p");
+          pNone.className = "input-hint";
+          setText(pNone, "No failed technical indicators detected.");
+          findingsList.appendChild(pNone);
+        } else {
+          for (var k = 0; k < failedFindings.length; k++) {
+            findingsList.appendChild(createFindingDetails(failedFindings[k]));
+          }
+        }
+
+        // Render Needs Review
+        var reviewList = document.getElementById("review-list");
+        clearNode(reviewList);
+        var reviewItems = report.needs_human_review || [];
+        if (reviewItems.length === 0) {
+          var pRevNone = document.createElement("p");
+          pRevNone.className = "input-hint";
+          setText(pRevNone, "No items flagged for manual review.");
+          reviewList.appendChild(pRevNone);
+        } else {
+          for (var m = 0; m < reviewItems.length; m++) {
+            reviewList.appendChild(createFindingDetails(reviewItems[m]));
+          }
+        }
+
+        // Render Not Applicable
+        var notAppList = document.getElementById("not-applicable-list");
+        clearNode(notAppList);
+        var notAppItems = report.not_applicable || [];
+        if (notAppItems.length === 0) {
+          var pNotAppNone = document.createElement("p");
+          pNotAppNone.className = "input-hint";
+          setText(pNotAppNone, "No rules classified as not applicable.");
+          notAppList.appendChild(pNotAppNone);
+        } else {
+          for (var na = 0; na < notAppItems.length; na++) {
+            notAppList.appendChild(createFindingDetails(notAppItems[na]));
+          }
+        }
+
+        // Render Not Assessed
+        var notAssessedList = document.getElementById("not-assessed-list");
+        clearNode(notAssessedList);
+        var notAssessed = report.not_assessed || [];
+        if (notAssessed.length === 0) {
+          var pNotNone = document.createElement("p");
+          pNotNone.className = "input-hint";
+          setText(pNotNone, "All technical rules evaluated.");
+          notAssessedList.appendChild(pNotNone);
+        } else {
+          for (var n = 0; n < notAssessed.length; n++) {
+            var itemDiv = document.createElement("div");
+            itemDiv.className = "field-row";
+            var itemTitle = document.createElement("strong");
+            setText(itemTitle, notAssessed[n].title);
+            itemDiv.appendChild(itemTitle);
+            itemDiv.appendChild(document.createTextNode(" (" + notAssessed[n].category + ") - Check Type: " + notAssessed[n].check_type));
+            notAssessedList.appendChild(itemDiv);
+          }
+        }
+
+        // Render Errors
+        var errorsCard = document.getElementById("errors-card");
+        var errorsList = document.getElementById("errors-list");
+        clearNode(errorsList);
+        var errors = report.errors || [];
+        if (errors.length > 0) {
+          errorsCard.classList.remove("hidden");
+          for (var e = 0; e < errors.length; e++) {
+            var errItem = document.createElement("div");
+            errItem.className = "error-box";
+            setText(errItem, errors[e]);
+            errorsList.appendChild(errItem);
+          }
+        } else {
+          errorsCard.classList.add("hidden");
+        }
+      }
+
+      function createFindingDetails(finding) {
+        var detailsEl = document.createElement("details");
+        var summaryEl = document.createElement("summary");
+
+        var titleSpan = document.createElement("span");
+        setText(titleSpan, finding.title);
+        summaryEl.appendChild(titleSpan);
+
+        var badgeClass = "badge-review";
+        if (finding.status === "passed") badgeClass = "badge-passed";
+        else if (finding.status === "failed") badgeClass = "badge-failed";
+        else if (finding.status === "not_applicable") badgeClass = "badge-not-applicable";
+        else if (finding.status === "not_evaluated") badgeClass = "badge-not-assessed";
+
+        var badgeSpan = document.createElement("span");
+        badgeSpan.className = "status-badge " + badgeClass;
+        setText(badgeSpan, (finding.status === "not_applicable" ? "N/A" : (finding.severity || finding.status || "")).toUpperCase());
+        summaryEl.appendChild(badgeSpan);
+
+        detailsEl.appendChild(summaryEl);
+
+        var contentDiv = document.createElement("div");
+        contentDiv.className = "details-content";
+
+        function addField(label, val) {
+          var row = document.createElement("div");
+          row.className = "field-row";
+          var nameSpan = document.createElement("span");
+          nameSpan.className = "field-name";
+          setText(nameSpan, label + ": ");
+          row.appendChild(nameSpan);
+          row.appendChild(document.createTextNode(String(val)));
+          contentDiv.appendChild(row);
+        }
+
+        addField("Category", finding.category);
+        addField("Rule ID", finding.rule_id);
+        var legalNote = finding.legal_ref_verified ? finding.legal_ref : "legal reference: to be verified";
+        addField("PDPA Section", legalNote);
+        addField("Recommendation", finding.recommendation || "Review indicator");
+        if (finding.matched_terms && finding.matched_terms.length > 0) {
+          addField("Matched Terms", finding.matched_terms.join(", "));
+        }
+
+        if (finding.evidence) {
+          var evRow = document.createElement("div");
+          evRow.className = "field-row";
+          var evName = document.createElement("span");
+          evName.className = "field-name";
+          setText(evName, "Evidence Observation: ");
+          evRow.appendChild(evName);
+          var codeBox = document.createElement("div");
+          codeBox.className = "code-box";
+          setText(codeBox, finding.evidence);
+          evRow.appendChild(codeBox);
+          contentDiv.appendChild(evRow);
+        }
+
+        detailsEl.appendChild(contentDiv);
+        return detailsEl;
+      }
+    })();
+  </script>
+</body>
+</html>
